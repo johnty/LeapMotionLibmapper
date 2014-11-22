@@ -1,0 +1,16 @@
+Build
+!Sample.cpp
+JSONViewer.html
+Sample.cs
+LeapLibmapper
+Sample.dSYM
+!LeapLibmapper.cpp
+Sample.html
+LeapLibmapper.dSYM
+Sample.java
+!Makefile
+Sample.py
+ObjectiveC
+SampleObjectiveC.xcodeproj
+Sample 
+SampleObjectiveC.xcworkspace
