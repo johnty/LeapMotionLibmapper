@@ -15,4 +15,7 @@ SampleObjectiveC.xcodeproj
 Sample
 SampleObjectiveC.xcworkspace
 
+
+testsend
+testrecv
 *.dSYM
