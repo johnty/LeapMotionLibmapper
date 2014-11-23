@@ -14,14 +14,18 @@ endif
 
 LIBMAPPER_INC := /usr/local/include/mapper-0/
 MAPPER_LIBRARY := /usr/local/lib/libmapper-0.dylib
+LIBMAPPER_SRC := /Users/johnty/Documents/libmapper-related/libmapper/include
 
-all:	Sample LeapLibmapper
+all:	Sample LeapLibmapper testsend testrecv
 
 Sample: Sample.cpp
 	$(CXX) -Wall -g -I../include Sample.cpp -o Sample $(LEAP_LIBRARY)
 
 LeapLibmapper: LeapLibmapper.cpp
 	$(CXX) -Wall -g -O -std=c++11 -I../include -I$(LIBMAPPER_INC) LeapLibmapper.cpp -o LeapLibmapper $(LEAP_LIBRARY) $(MAPPER_LIBRARY)
+
+testsend: testsend.c
+	$(CC) -Wall -g -O -I$(LIBMAPPER_SRC) testsend.c -o testsend $(MAPPER_LIBRARY)
 
 ifeq ($(OS), Darwin)
 	install_name_tool -change @loader_path/libLeap.dylib ../lib/libLeap.dylib Sample
