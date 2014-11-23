@@ -50,6 +50,7 @@ void SampleListener::onInit(const Controller& controller) {
                 std::cout<<"waiting for dev..."<<std::endl;
             }
             mapper::Signal sig = myMapper->add_output( "/outA", 1, 'i', 0, 0, 0 );
+            std::cout<<"num outputs = "<<myMapper->num_outputs()<<std::endl;
             test_out = &sig;
         }
 }
@@ -217,8 +218,16 @@ void SampleListener::onFrame(const Controller& controller) {
         myMapper->poll();
     }
     if (test_out) {
+        
+        std::cout<<"num outputs = "<<myMapper->num_outputs()<<std::endl;
+
+        mapper::Signal::Iterator iter = myMapper->outputs().begin();
         int nHands = frame.hands().count();
-        test_out->update(nHands);
+        for (; iter != myMapper->outputs().end(); iter++) {
+            std::cout<< "output: " << (*iter).full_name() <<std::endl;
+            (*iter).update(nHands);
+        }
+
     }
 
 }
